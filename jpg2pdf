@@ -1,0 +1,20 @@
+#!/bin/sh
+
+SRC=/home/kungen/Documents/
+filename=output_name.pdf
+
+for file in `ls *.JPG`
+do
+   convert $file `echo $file | sed 's/\.JPG$/\.pdf/'`
+   echo .
+done
+
+pdftk *.pdf cat output $SRC/$filename
+
+echo PDF created...
+echo "$filename saved in $SRC..."
+echo cleaning up...
+rm *.JPG
+echo .
+rm *.pdf
+echo .
